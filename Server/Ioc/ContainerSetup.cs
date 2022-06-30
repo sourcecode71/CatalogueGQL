@@ -30,8 +30,13 @@ namespace CatalogueGQL.Server.Ioc
         {
             services.AddGraphQLServer()
                 .AddQueryType<Query>()
+                .AddMutationType<Mutation>()
+                .AddSubscriptionType<Subscription>()
                 .AddType<MajorType>()
-                .AddType<CourseType>();
+                .AddType<CourseType>()
+                .AddFiltering()
+                .AddSorting()
+                .AddInMemorySubscriptions();
         }
 
         private static void ConfigureInject(IServiceCollection services)
