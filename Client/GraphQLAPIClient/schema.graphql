@@ -1,0 +1,213 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+"Offer Degree from the university"
+type Major {
+  "Minimum credit hours for the degree"
+  minCreditHours: Decimal!
+  "Avialable coures for the specific major"
+  courses: [Courses!]!
+  id: Int!
+  code: String!
+  title: String!
+}
+
+"Offer courses from university for a major"
+type Courses {
+  "Course Title"
+  title: String!
+  "Course Code"
+  code: String!
+  "Avilable Major for the course"
+  major: Major!
+  id: Int!
+  creditHours: Float!
+  majorId: Int!
+}
+
+type Query {
+  major(where: MajorFilterInput order: [MajorSortInput!]): [Major!]!
+  course(where: CoursesFilterInput order: [CoursesSortInput!]): [Courses!]!
+}
+
+type Mutation {
+  addMajor(addMajor: AddMajorInputsInput!): AddMajorPayload!
+  addCourses(inputs: AddCourseInputsInput!): AddCourseInputPayload!
+}
+
+type Subscription {
+  onCoursesAdded: Courses!
+}
+
+"The built-in `Decimal` scalar type."
+scalar Decimal
+
+"Offer Degree from a university"
+input MajorFilterInput {
+  and: [MajorFilterInput!]
+  or: [MajorFilterInput!]
+  id: ComparableInt32OperationFilterInput
+  minCreditHours: ComparableDecimalOperationFilterInput
+  code: StringOperationFilterInput
+  title: StringOperationFilterInput
+  courses: ListFilterInputTypeOfCoursesFilterInput
+  setUser: StringOperationFilterInput
+  setDate: ComparableDateTimeOperationFilterInput
+  isDeleted: BooleanOperationFilterInput
+}
+
+"Offer Degree from a university"
+input MajorSortInput {
+  id: SortEnumType
+  minCreditHours: SortEnumType
+  code: SortEnumType
+  title: SortEnumType
+  setUser: SortEnumType
+  setDate: SortEnumType
+  isDeleted: SortEnumType
+}
+
+input CoursesFilterInput {
+  and: [CoursesFilterInput!]
+  or: [CoursesFilterInput!]
+  id: ComparableInt32OperationFilterInput
+  code: StringOperationFilterInput
+  title: StringOperationFilterInput
+  creditHours: ComparableDoubleOperationFilterInput
+  majorId: ComparableInt32OperationFilterInput
+  major: MajorFilterInput
+  setUser: StringOperationFilterInput
+  setDate: ComparableDateTimeOperationFilterInput
+  isDeleted: BooleanOperationFilterInput
+}
+
+input CoursesSortInput {
+  id: SortEnumType
+  code: SortEnumType
+  title: SortEnumType
+  creditHours: SortEnumType
+  majorId: SortEnumType
+  major: MajorSortInput
+  setUser: SortEnumType
+  setDate: SortEnumType
+  isDeleted: SortEnumType
+}
+
+input ComparableInt32OperationFilterInput {
+  eq: Int
+  neq: Int
+  in: [Int!]
+  nin: [Int!]
+  gt: Int
+  ngt: Int
+  gte: Int
+  ngte: Int
+  lt: Int
+  nlt: Int
+  lte: Int
+  nlte: Int
+}
+
+input ComparableDecimalOperationFilterInput {
+  eq: Decimal
+  neq: Decimal
+  in: [Decimal!]
+  nin: [Decimal!]
+  gt: Decimal
+  ngt: Decimal
+  gte: Decimal
+  ngte: Decimal
+  lt: Decimal
+  nlt: Decimal
+  lte: Decimal
+  nlte: Decimal
+}
+
+input StringOperationFilterInput {
+  and: [StringOperationFilterInput!]
+  or: [StringOperationFilterInput!]
+  eq: String
+  neq: String
+  contains: String
+  ncontains: String
+  in: [String]
+  nin: [String]
+  startsWith: String
+  nstartsWith: String
+  endsWith: String
+  nendsWith: String
+}
+
+input ListFilterInputTypeOfCoursesFilterInput {
+  all: CoursesFilterInput
+  none: CoursesFilterInput
+  some: CoursesFilterInput
+  any: Boolean
+}
+
+input ComparableDateTimeOperationFilterInput {
+  eq: DateTime
+  neq: DateTime
+  in: [DateTime!]
+  nin: [DateTime!]
+  gt: DateTime
+  ngt: DateTime
+  gte: DateTime
+  ngte: DateTime
+  lt: DateTime
+  nlt: DateTime
+  lte: DateTime
+  nlte: DateTime
+}
+
+input BooleanOperationFilterInput {
+  eq: Boolean
+  neq: Boolean
+}
+
+enum SortEnumType {
+  ASC
+  DESC
+}
+
+input ComparableDoubleOperationFilterInput {
+  eq: Float
+  neq: Float
+  in: [Float!]
+  nin: [Float!]
+  gt: Float
+  ngt: Float
+  gte: Float
+  ngte: Float
+  lt: Float
+  nlt: Float
+  lte: Float
+  nlte: Float
+}
+
+input AddCourseInputsInput {
+  code: String!
+  title: String!
+  creditHours: Float!
+  majorId: Int!
+}
+
+type AddCourseInputPayload {
+  input: Courses!
+}
+
+input AddMajorInputsInput {
+  code: String!
+  title: String!
+  minCreditHours: Decimal!
+}
+
+type AddMajorPayload {
+  major: Major!
+}
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime

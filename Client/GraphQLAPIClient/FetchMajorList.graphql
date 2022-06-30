@@ -1,0 +1,13 @@
+query FetchMajorList{
+	major{
+		id,
+		code,
+		title,
+		courses{
+			id,
+			code,
+			title,
+			majorId
+		}
+	}
+}
