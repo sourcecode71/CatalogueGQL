@@ -11,14 +11,7 @@ builder.Services.AddRazorPages();
 var startup = new Startup(builder.Configuration);
 startup.ConfigureServices(builder.Services);
 
-string graphQLServerPath = "https://localhost:7277/" + "graphql";
 
-builder.Services.AddCatalogueGQLClient()
-   .ConfigureHttpClient(client =>
-   {
-       client.BaseAddress = new Uri(graphQLServerPath);
-   }
-);
 
 
 var app = builder.Build();

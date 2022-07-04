@@ -9,7 +9,11 @@ namespace CatalogueGQL.Server.GraphQL
         [UseDbContext(typeof(CatalogueDBContext))]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<Major> GetMajor([ScopedService] CatalogueDBContext dBContext) => dBContext.Major;
+        public IQueryable<Major> GetMajor([ScopedService] CatalogueDBContext dBContext) 
+        {
+            var majorlist = dBContext.Major;
+            return dBContext.Major;
+        }
 
         [UseDbContext(typeof (CatalogueDBContext))]
         [UseFiltering]

@@ -1,0 +1,8 @@
+﻿query FetchCourseList{
+	  course {
+		id,
+		code,
+		title,
+		creditHours
+	}
+}

@@ -3,6 +3,7 @@ query FetchMajorList{
 		id,
 		code,
 		title,
+		minCreditHours,
 		courses{
 			id,
 			code,

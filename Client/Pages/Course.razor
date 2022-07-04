@@ -1,0 +1,76 @@
+﻿@page "/courses"
+
+<h3>Course</h3>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10 col-10">
+    
+   <EditForm  class="row" Model="@courseModel" OnInvalidSubmit=@InvalidFormSubmitted OnValidSubmit="@ValidFormSubmitted">
+    <DataAnnotationsValidator />
+     <div class="col-md-6 col-lg-6 col-sm-12 mb-5">
+         <div class="mb-3 row">
+             <div>
+                   <label for="Code" class="form-label">Code * </label>
+                   <input id="Code" name="@courseModel.Code" class="form-control" @bind="@courseModel.Code">
+                    <ValidationMessage For="@(() => courseModel.Code)"/>
+             </div>
+             <div class="mt-2">
+                  <label for="Ttile" class="form-label">Title * </label>
+                    <input class="form-control" @bind="@courseModel.Title" />
+                    <ValidationMessage For="() => courseModel.Title"/>
+             </div>
+              <div class="mt-2">
+                  <label for="creditHours" class="form-label">Credit Hours  </label>
+                    <input class="form-control" @bind="@courseModel.CreditHours" />
+                    <ValidationMessage For="() => courseModel.CreditHours"/>
+             </div>
+         </div>
+         <div class ="row">
+              <div class="col-3 gap-1">
+               <button class="btn btn-outline-info"  type="submit">@BtnText </button>
+              </div>
+              <div class="col-3">
+               <button class="btn btn-outline-dark"  type="button" @onclick="ResetForm" >Cancel</button>
+                </div>
+         </div>
+     </div>
+  </EditForm>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-2"></div>
+      <div class="col-md-10 col-10">
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>Code</th>
+                       <th> Title </th>
+                       <th>Credit Hours</th>
+                       <th> Actions </th>
+                  </tr>
+              </thead>
+               <tbody>
+                  @foreach (var item in lstCourse)
+                  {
+                     <tr>
+                         <td>@item.Code</td>
+                         <td>@item.Title</td>
+                         <td>@item.CreditHours</td>
+                         <td>
+                             <div class="action-btn">
+                                 <button class="btn btn-outline-warning float-md-start"> 
+                                     <span class="oi oi-trash"></span>
+                                 </button>
+
+                                  <button class="btn btn-outline-warning float-md-start ml-3" @onclick="()=>EditCourse(item)" > 
+                                     <span class="oi oi-pencil"></span>
+                                 </button>
+                             </div>
+                         </td>
+                     </tr> 
+                  }
+               </tbody>
+          </table>
+      </div>
+     <div class="col-md-2"></div>
+</div>

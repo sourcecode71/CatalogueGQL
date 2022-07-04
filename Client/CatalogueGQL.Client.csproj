@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <GraphQL Remove="GraphQLAPIClient\FetchCourseList.graphql" />
     <GraphQL Remove="GraphQLAPIClient\FetchMajorList.graphql" />
+    <GraphQL Remove="GraphQLAPIClient\MutatedCourse.graphql" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,13 +20,21 @@
     <AdditionalFiles Include="GraphQLAPIClient\FetchMajorList.graphql">
       <GraphQL>true</GraphQL>
     </AdditionalFiles>
+	  <AdditionalFiles Include="GraphQLAPIClient\FetchCourseList.graphql">
+		  <GraphQL>true</GraphQL>
+	  </AdditionalFiles>
   </ItemGroup>
+
+	<ItemGroup>
+		<None Remove="GraphQLAPIClient\MutatedCourse.graphql" />
+	</ItemGroup>
 
   <ItemGroup>
     <Content Include=".config\dotnet-tools.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BlazorTable" Version="1.17.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.6" PrivateAssets="all" />
     <PackageReference Include="StrawberryShake.CodeGeneration.CSharp.Analyzers" Version="12.11.1" />
