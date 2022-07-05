@@ -23,11 +23,10 @@
 	  <AdditionalFiles Include="GraphQLAPIClient\FetchCourseList.graphql">
 		  <GraphQL>true</GraphQL>
 	  </AdditionalFiles>
+	  <AdditionalFiles Include="GraphQLAPIClient\MutatedCourse.graphql">
+		  <GraphQL>true</GraphQL>
+	  </AdditionalFiles>
   </ItemGroup>
-
-	<ItemGroup>
-		<None Remove="GraphQLAPIClient\MutatedCourse.graphql" />
-	</ItemGroup>
 
   <ItemGroup>
     <Content Include=".config\dotnet-tools.json" />

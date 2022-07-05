@@ -23,13 +23,11 @@ namespace CatalogueGQL.Server
         {
 
             IApplicationBuilder app = application;
-            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
+            var context = serviceScope.ServiceProvider.GetService<CatalogueDBContext>();
+            if (context != null)
             {
-                var context = serviceScope.ServiceProvider.GetService<CatalogueDBContext>();
-                if (context != null)
-                {
-                    context.Database.Migrate();
-                }
+                context.Database.Migrate();
             }
         }
     }

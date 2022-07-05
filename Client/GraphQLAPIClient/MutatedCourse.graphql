@@ -1,10 +1,5 @@
-﻿mutation AddCourses($course :AddCourseInputs){
-	addCourses(course:$course){
-	  course{
-	    code,
-		title,
-		creditHours,
-		majorId
-	  }
-	}
+﻿mutation AddCourse($input:AddCourseInputs)
+{
+	addCourses(inputs:$input)
+	
 }
