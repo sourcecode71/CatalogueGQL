@@ -1,99 +1,80 @@
 ﻿schema {
-  query: Query
-  mutation: Mutation
-  subscription: Subscription
+  query: CatalogueQueryResolver
+  mutation: CourseMutationResolver
 }
 
-"Offer Degree from the university"
-type Major {
-  "Minimum credit hours for the degree"
-  minCreditHours: Decimal!
-  "Avialable coures for the specific major"
-  courses: [Courses!]!
-  id: Int!
-  code: String!
-  title: String!
+type CatalogueQueryResolver {
+  "Gets the list of Course."
+  courseList(order: [CourseSortInput!] where: CourseFilterInput): [Course!]!
+  "Gets the list of School."
+  allSchools(order: [SchoolSortInput!] where: SchoolFilterInput): [School!]!
+  "Gets the School."
+  schoolById(id: Int!): School!
 }
 
-"Offer courses from university for a major"
-type Courses {
-  "Course Title"
-  title: String!
-  "Course Code"
-  code: String!
-  "Avilable Major for the course"
-  major: Major!
-  id: Int!
-  creditHours: Float!
-  majorId: Int!
+type CourseMutationResolver {
+  "Add a new course data."
+  addCourse(course: CourseDtoInput!): AddCoursePayload!
+  "Course Update"
+  updateCourse(course: CourseDtoInput!): AddCoursePayload!
+  "Create the School."
+  createSchool(school: SchoolDtoInput!): AddEditSchoolPayload!
+  "Delete the School."
+  deleteSchool(id: Int!): Int!
+  "Update the School."
+  updateSchool(school: SchoolDtoInput!): AddEditSchoolPayload!
 }
 
-type Query {
-  major(where: MajorFilterInput order: [MajorSortInput!]): [Major!]!
-  course(where: CoursesFilterInput order: [CoursesSortInput!]): [Courses!]!
-}
-
-type Mutation {
-  addMajor(addMajor: AddMajorInputsInput!): AddMajorPayload!
-  addCourses(inputs: AddCourseInputsInput!): AddCourseInputPayload!
-}
-
-type Subscription {
-  onCoursesAdded: Courses!
-}
-
-"The built-in `Decimal` scalar type."
-scalar Decimal
-
-"Offer Degree from a university"
-input MajorFilterInput {
-  and: [MajorFilterInput!]
-  or: [MajorFilterInput!]
-  id: ComparableInt32OperationFilterInput
-  minCreditHours: ComparableDecimalOperationFilterInput
-  code: StringOperationFilterInput
-  title: StringOperationFilterInput
-  courses: ListFilterInputTypeOfCoursesFilterInput
-  setUser: StringOperationFilterInput
-  setDate: ComparableDateTimeOperationFilterInput
-  isDeleted: BooleanOperationFilterInput
-}
-
-"Offer Degree from a university"
-input MajorSortInput {
-  id: SortEnumType
-  minCreditHours: SortEnumType
-  code: SortEnumType
-  title: SortEnumType
-  setUser: SortEnumType
-  setDate: SortEnumType
-  isDeleted: SortEnumType
-}
-
-input CoursesFilterInput {
-  and: [CoursesFilterInput!]
-  or: [CoursesFilterInput!]
-  id: ComparableInt32OperationFilterInput
-  code: StringOperationFilterInput
-  title: StringOperationFilterInput
-  creditHours: ComparableDoubleOperationFilterInput
-  majorId: ComparableInt32OperationFilterInput
-  major: MajorFilterInput
-  setUser: StringOperationFilterInput
-  setDate: ComparableDateTimeOperationFilterInput
-  isDeleted: BooleanOperationFilterInput
-}
-
-input CoursesSortInput {
+input CourseSortInput {
   id: SortEnumType
   code: SortEnumType
   title: SortEnumType
   creditHours: SortEnumType
-  majorId: SortEnumType
-  major: MajorSortInput
+  schoolId: SortEnumType
+  school: SchoolSortInput
   setUser: SortEnumType
   setDate: SortEnumType
   isDeleted: SortEnumType
+}
+
+input CourseFilterInput {
+  and: [CourseFilterInput!]
+  or: [CourseFilterInput!]
+  id: ComparableInt32OperationFilterInput
+  code: StringOperationFilterInput
+  title: StringOperationFilterInput
+  creditHours: ComparableDoubleOperationFilterInput
+  schoolId: ComparableInt32OperationFilterInput
+  school: SchoolFilterInput
+  setUser: ComparableInt32OperationFilterInput
+  setDate: ComparableDateTimeOperationFilterInput
+  isDeleted: BooleanOperationFilterInput
+}
+
+input SchoolSortInput {
+  id: SortEnumType
+  title: SortEnumType
+  name: SortEnumType
+  setUser: SortEnumType
+  setDate: SortEnumType
+  isDeleted: SortEnumType
+}
+
+input SchoolFilterInput {
+  and: [SchoolFilterInput!]
+  or: [SchoolFilterInput!]
+  id: ComparableInt32OperationFilterInput
+  title: StringOperationFilterInput
+  name: StringOperationFilterInput
+  course: ListFilterInputTypeOfCourseFilterInput
+  setUser: ComparableInt32OperationFilterInput
+  setDate: ComparableDateTimeOperationFilterInput
+  isDeleted: BooleanOperationFilterInput
+}
+
+enum SortEnumType {
+  ASC
+  DESC
 }
 
 input ComparableInt32OperationFilterInput {
@@ -111,21 +92,6 @@ input ComparableInt32OperationFilterInput {
   nlte: Int
 }
 
-input ComparableDecimalOperationFilterInput {
-  eq: Decimal
-  neq: Decimal
-  in: [Decimal!]
-  nin: [Decimal!]
-  gt: Decimal
-  ngt: Decimal
-  gte: Decimal
-  ngte: Decimal
-  lt: Decimal
-  nlt: Decimal
-  lte: Decimal
-  nlte: Decimal
-}
-
 input StringOperationFilterInput {
   and: [StringOperationFilterInput!]
   or: [StringOperationFilterInput!]
@@ -141,11 +107,19 @@ input StringOperationFilterInput {
   nendsWith: String
 }
 
-input ListFilterInputTypeOfCoursesFilterInput {
-  all: CoursesFilterInput
-  none: CoursesFilterInput
-  some: CoursesFilterInput
-  any: Boolean
+input ComparableDoubleOperationFilterInput {
+  eq: Float
+  neq: Float
+  in: [Float!]
+  nin: [Float!]
+  gt: Float
+  ngt: Float
+  gte: Float
+  ngte: Float
+  lt: Float
+  nlt: Float
+  lte: Float
+  nlte: Float
 }
 
 input ComparableDateTimeOperationFilterInput {
@@ -168,46 +142,70 @@ input BooleanOperationFilterInput {
   neq: Boolean
 }
 
-enum SortEnumType {
-  ASC
-  DESC
+input ListFilterInputTypeOfCourseFilterInput {
+  all: CourseFilterInput
+  none: CourseFilterInput
+  some: CourseFilterInput
+  any: Boolean
 }
 
-input ComparableDoubleOperationFilterInput {
-  eq: Float
-  neq: Float
-  in: [Float!]
-  nin: [Float!]
-  gt: Float
-  ngt: Float
-  gte: Float
-  ngte: Float
-  lt: Float
-  nlt: Float
-  lte: Float
-  nlte: Float
+type School {
+  id: Int!
+  title: String!
+  name: String!
+  course: [Course!]!
+  setUser: Int!
+  setDate: DateTime!
+  isDeleted: Boolean!
 }
 
-input AddCourseInputsInput {
+input CourseDtoInput {
+  id: Int
+  code: String
+  title: String
+  creditHours: Float!
+  schoolId: Int!
+}
+
+type AddCoursePayload {
+  course: CourseDto!
+}
+
+type Course {
+  id: Int!
   code: String!
   title: String!
   creditHours: Float!
-  majorId: Int!
+  schoolId: Int!
+  school: School!
+  setUser: Int!
+  setDate: DateTime!
+  isDeleted: Boolean!
 }
 
-type AddCourseInputPayload {
-  input: Courses!
+type AddEditSchoolPayload {
+  school: SchoolDto!
 }
 
-input AddMajorInputsInput {
-  code: String!
-  title: String!
-  minCreditHours: Decimal!
-}
-
-type AddMajorPayload {
-  major: Major!
+input SchoolDtoInput {
+  id: Int
+  title: String
+  name: String
 }
 
 "The `DateTime` scalar represents an ISO-8601 compliant date time type."
 scalar DateTime
+
+type SchoolDto {
+  id: Int
+  title: String
+  name: String
+}
+
+type CourseDto {
+  id: Int
+  code: String
+  title: String
+  creditHours: Float!
+  schoolId: Int!
+}

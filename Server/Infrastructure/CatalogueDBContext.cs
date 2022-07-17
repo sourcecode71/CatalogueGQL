@@ -1,7 +1,7 @@
-﻿using CatalogueGQL.Server.Models;
+﻿using Catalogue.Shared.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CatalogueGQL.Server.Infrastructure
+namespace Catalogue.Server.Infrastructure
 {
     public class CatalogueDBContext : DbContext
     {
@@ -9,21 +9,27 @@ namespace CatalogueGQL.Server.Infrastructure
         {
 
         }
-        public DbSet<Courses> Courses { get; set; }
-        public virtual DbSet<Major> Major { get; set; }
+        public DbSet<Course> Course => Set<Course>();
+        public DbSet<School> School  => Set<School>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Major>()
-                .HasMany(c => c.Courses)
-                .WithOne(p => p.Major)
-                .HasForeignKey(p => p.MajorId);
+            modelBuilder.Entity<Course>(entity =>
+            {
+                entity.ToTable("Course");
+                entity.Property(e => e.Id).IsUnicode(false);
+                entity.Property(e => e.Title).HasMaxLength(50).IsUnicode(false);
+                entity.Property(e => e.Code).HasMaxLength(20).IsUnicode(false);
+                entity.Property(e => e.SchoolId).IsUnicode(false);
+            });
 
-            modelBuilder.Entity<Courses>()
-                .HasOne(p => p.Major)
-                .WithMany(c => c.Courses)
-                .HasForeignKey(p=>p.MajorId);
+            modelBuilder.Entity<School>(entity => {
+                entity.ToTable("School");
+                entity.Property(e => e.Id).IsUnicode(false);
+                entity.Property(e => e.Title).HasMaxLength(50).IsUnicode(false);
+                entity.Property(e=>e.Name).HasMaxLength(100).IsUnicode(false);
+            });
         }
     }
 }

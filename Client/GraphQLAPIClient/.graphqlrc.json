@@ -3,9 +3,8 @@
   "documents": "**/*.graphql",
   "extensions": {
     "strawberryShake": {
-      "name": "CatalogueGQLClient",
-      "namespace": "CatalogueGQL.Client.GraphQLAPIClient",
-      "url": "https://localhost:7277/graphql/",
+      "name": "CatalogueClient",
+      "url": "https://localhost:7017/graphql/",
       "dependencyInjection": true,
       "strictSchemaValidation": true,
       "hashAlgorithm": "md5",

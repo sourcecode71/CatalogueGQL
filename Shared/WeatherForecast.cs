@@ -1,4 +1,4 @@
-namespace CatalogueGQL.Shared
+namespace Catalogue.Shared
 {
     public class WeatherForecast
     {

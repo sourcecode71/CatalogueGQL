@@ -1,7 +1,7 @@
-using CatalogueGQL.Shared;
+using Catalogue.Shared;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CatalogueGQL.Server.Controllers
+namespace Catalogue.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]

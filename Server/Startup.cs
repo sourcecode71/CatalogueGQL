@@ -1,8 +1,8 @@
-﻿using CatalogueGQL.Server.Infrastructure;
-using CatalogueGQL.Server.Ioc;
+﻿using Catalogue.Server.Infrastructure;
+using Catalogue.Server.Ioc;
 using Microsoft.EntityFrameworkCore;
 
-namespace CatalogueGQL.Server
+namespace Catalogue.Server
 {
     internal class Startup
     {
@@ -11,7 +11,7 @@ namespace CatalogueGQL.Server
             Configuration = configuration;
         }
 
-        internal IConfiguration Configuration { get;}
+        internal IConfiguration Configuration { get; }
 
         internal void ConfigureServices(IServiceCollection services)
         {

@@ -1,0 +1,11 @@
+D:\Learning\Catalogue\Shared\bin\Debug\net6.0\Catalogue.Shared.deps.json
+D:\Learning\Catalogue\Shared\bin\Debug\net6.0\Catalogue.Shared.dll
+D:\Learning\Catalogue\Shared\bin\Debug\net6.0\ref\Catalogue.Shared.dll
+D:\Learning\Catalogue\Shared\bin\Debug\net6.0\Catalogue.Shared.pdb
+D:\Learning\Catalogue\Shared\obj\Debug\net6.0\Catalogue.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Learning\Catalogue\Shared\obj\Debug\net6.0\Catalogue.Shared.AssemblyInfoInputs.cache
+D:\Learning\Catalogue\Shared\obj\Debug\net6.0\Catalogue.Shared.AssemblyInfo.cs
+D:\Learning\Catalogue\Shared\obj\Debug\net6.0\Catalogue.Shared.csproj.CoreCompileInputs.cache
+D:\Learning\Catalogue\Shared\obj\Debug\net6.0\Catalogue.Shared.dll
+D:\Learning\Catalogue\Shared\obj\Debug\net6.0\ref\Catalogue.Shared.dll
+D:\Learning\Catalogue\Shared\obj\Debug\net6.0\Catalogue.Shared.pdb

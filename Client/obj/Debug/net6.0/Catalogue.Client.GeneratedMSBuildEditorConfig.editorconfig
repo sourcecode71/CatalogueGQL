@@ -1,0 +1,115 @@
+is_global = true
+build_property.StrawberryShake_DefaultNamespace = Catalogue.Client
+build_property.StrawberryShake_LogFile = 
+build_property.StrawberryShake_BuildDirectory = C:\Users\HP\.nuget\packages\strawberryshake.codegeneration.csharp.analyzers\12.12.0\build\..\analyzers\dotnet\cs
+build_property.StrawberryShake_PersistedQueryDirectory = 
+build_property.StrawberryShake_State = obj\\berry
+build_property.StrawberryShake_EmitGeneratedCode = 
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = browser
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = true
+build_property.IncludeAllContentForSelfExtract = 
+build_property.RootNamespace = Catalogue.Client
+build_property.RootNamespace = Catalogue.Client
+build_property.ProjectDir = D:\Learning\Catalogue\Client\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Learning\Catalogue\Client
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Learning/Catalogue/Client/GraphQLAPIClient/schema.extensions.graphql]
+build_metadata.AdditionalFiles.GraphQL = true
+build_metadata.AdditionalFiles.GraphQLConfig = 
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learning/Catalogue/Client/GraphQLAPIClient/schema.graphql]
+build_metadata.AdditionalFiles.GraphQL = true
+build_metadata.AdditionalFiles.GraphQLConfig = 
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learning/Catalogue/Client/GraphQLAPIClient/.graphqlrc.json]
+build_metadata.AdditionalFiles.GraphQL = 
+build_metadata.AdditionalFiles.GraphQLConfig = true
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learning/Catalogue/Client/GraphQLAPIClient/AddCourseData.graphql]
+build_metadata.AdditionalFiles.GraphQL = 
+build_metadata.AdditionalFiles.GraphQLConfig = true
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learning/Catalogue/Client/GraphQLAPIClient/AddEditSchoolData.graphql]
+build_metadata.AdditionalFiles.GraphQL = 
+build_metadata.AdditionalFiles.GraphQLConfig = true
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learning/Catalogue/Client/GraphQLAPIClient/FetchCourseList.graphql]
+build_metadata.AdditionalFiles.GraphQL = 
+build_metadata.AdditionalFiles.GraphQLConfig = true
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learning/Catalogue/Client/GraphQLAPIClient/FetchSchoolList.graphql]
+build_metadata.AdditionalFiles.GraphQL = 
+build_metadata.AdditionalFiles.GraphQLConfig = true
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learning/Catalogue/Client/App.razor]
+build_metadata.AdditionalFiles.GraphQL = 
+build_metadata.AdditionalFiles.GraphQLConfig = 
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learning/Catalogue/Client/Pages/AddEditCourse.razor]
+build_metadata.AdditionalFiles.GraphQL = 
+build_metadata.AdditionalFiles.GraphQLConfig = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRWRpdENvdXJzZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learning/Catalogue/Client/Pages/Index.razor]
+build_metadata.AdditionalFiles.GraphQL = 
+build_metadata.AdditionalFiles.GraphQLConfig = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learning/Catalogue/Client/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.GraphQL = 
+build_metadata.AdditionalFiles.GraphQLConfig = 
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learning/Catalogue/Client/_Imports.razor]
+build_metadata.AdditionalFiles.GraphQL = 
+build_metadata.AdditionalFiles.GraphQLConfig = 
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learning/Catalogue/Client/Pages/AddEditSchool.razor]
+build_metadata.AdditionalFiles.GraphQL = 
+build_metadata.AdditionalFiles.GraphQLConfig = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRWRpdFNjaG9vbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-zcngftbd3m
+
+[D:/Learning/Catalogue/Client/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.GraphQL = 
+build_metadata.AdditionalFiles.GraphQLConfig = 
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-cogqf0vd6c
+
+[D:/Learning/Catalogue/Client/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.GraphQL = 
+build_metadata.AdditionalFiles.GraphQLConfig = 
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-qi7fwlx9o9

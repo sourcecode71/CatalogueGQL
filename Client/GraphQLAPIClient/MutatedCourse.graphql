@@ -1,5 +1,0 @@
-﻿mutation AddCourse($input:AddCourseInputs)
-{
-	addCourses(inputs:$input)
-	
-}

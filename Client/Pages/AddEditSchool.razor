@@ -1,0 +1,74 @@
+﻿@page "/school"
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+         <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Create School</h5>
+             <EditForm Model=@scVm  OnInvalidSubmit=@InvalidFormSubmitted OnValidSubmit="@ValidFormSubmitted">
+                <DataAnnotationsValidator />
+               <div class="form-group">
+                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Title</label>
+                  <div class="col-sm-10">
+                      <InputText class="form-control" @bind-Value=@scVm.Title  />
+                      <ValidationMessage For="@(()=>scVm.Title)" />
+                  </div>
+                </div>
+
+                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Name</label>
+                  <div class="col-sm-10">
+                      <InputText class="form-control" @bind-Value=@scVm.Name />
+                      <ValidationMessage For="@(()=>scVm.Name)" />
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class=" col-2"></div>
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">@BtnText </button>
+                    </div>
+                </div>
+                </div>
+            
+            
+            </EditForm>
+            <div class="row">
+                <table class="table">
+                     <thead>
+                         <tr>
+                          <th> Title </th>
+                          <th> Name </th>
+                          <th> Action</th>
+                         </tr>
+                     </thead>
+                      <tbody>
+                           @foreach (var school in schoolList)
+                          {
+                            <tr>
+                                <td>@school.Title</td>
+                                <td>@school.Name</td>
+                                   <td>
+                                     <div class="action-btn">
+                                         <button class="btn btn-outline-warning float-md-start"> 
+                                             <span class="oi oi-trash"></span>
+                                         </button>
+
+                                          <button style="margin-left:4px" class="btn btn-outline-warning float-md-start ml-3" @onclick="()=>EditSchool(school)" > 
+                                             <span class="oi oi-pencil"></span>
+                                         </button>
+                                     </div>
+                                 </td>
+                            </tr>
+                          }
+                      </tbody>
+                </table>
+            </div>
+
+       </div>
+       </div>
+    </div>
+    <div class="col-2"></div>
+</div>

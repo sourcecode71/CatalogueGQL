@@ -1,47 +1,43 @@
-﻿using CatalogueGQL.Server.GraphQL;
-using CatalogueGQL.Server.GraphQL.Course;
-using CatalogueGQL.Server.GraphQL.Majors;
-using CatalogueGQL.Server.Infrastructure;
+﻿using Catalogue.Server.GraphQL;
+using Catalogue.Server.Infrastructure;
+using Catalogue.Server.Infrastructure.DataAccess;
+using Catalogue.Server.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Serilog;
 
-namespace CatalogueGQL.Server.Ioc
+namespace Catalogue.Server.Ioc
 {
     internal static class ContainerSetup
     {
         internal static void Setup(IServiceCollection services, IConfiguration configuration)
         {
             ConfigureContext(services, configuration);
-            ConfigureGraphQL(services,configuration);
-            ConfigureInject(services);
+            ConfigureGraphQL(services, configuration);
+           // ConfigureInject(services);
         }
-
-       
-
         private static void ConfigureContext(IServiceCollection services, IConfiguration configuration)
         {
             var connectionString = configuration["Data:main"];
             services.AddEntityFrameworkSqlServer();
             services.AddPooledDbContextFactory<CatalogueDBContext>(options =>
                 options.UseSqlServer(connectionString));
+
+            services.AddScoped<ICourse, CourseDataAccessLayer>();
+            services.AddScoped<ISchool, SchoolDataAccessLayer>();
         }
 
         private static void ConfigureGraphQL(IServiceCollection services, IConfiguration configuration)
         {
             services.AddGraphQLServer()
-                .AddQueryType<Query>()
-                .AddMutationType<Mutation>()
-                .AddSubscriptionType<Subscription>()
-                .AddType<MajorType>()
-                .AddType<CourseType>()
+                .AddDefaultTransactionScopeHandler()
+                .AddQueryType<CatalogueQueryResolver>()
+                .AddMutationType<CourseMutationResolver>()
+                .AddTypeExtension<SchoolQueryResolver>()
+                .AddTypeExtension<SchoolMutationResolver>()
                 .AddFiltering()
-                .AddSorting()
-                .AddInMemorySubscriptions();
+                .AddSorting();
         }
 
-        private static void ConfigureInject(IServiceCollection services)
-        {
+      
 
-        }
     }
 }

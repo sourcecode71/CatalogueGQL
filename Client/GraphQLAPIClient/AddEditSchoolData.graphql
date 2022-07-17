@@ -1,0 +1,17 @@
+﻿mutation AddSchoolData($schoolData:SchoolDtoInput!){
+  createSchool(school:$schoolData){
+  school{
+      title
+    }
+  }
+}
+
+mutation UpdateSchoolData($schoolData: SchoolDtoInput!){
+  updateSchool(school:$schoolData){
+     school{
+       id,
+       title,
+       name
+     }
+   }
+}

@@ -1,0 +1,15 @@
+﻿mutation AddCourseData($courseData:CourseDtoInput!){
+  addCourse(course:$courseData){
+  course{
+      title
+    }
+  }
+}
+
+mutation UpdateCourseData($scourseData: CourseDtoInput!){
+  updateCourse(course: $scourseData){
+     course{
+      title
+    }
+   }
+}

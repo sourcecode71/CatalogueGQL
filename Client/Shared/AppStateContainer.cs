@@ -1,51 +1,75 @@
-﻿using CatalogueGQL.Client.GraphQLAPIClient;
-using CatalogueGQL.Shared.Models;
+﻿using Catalogue.Shared.Dto;
+using Catalogue.Shared.Models;
 
-namespace CatalogueGQL.Client.Shared
+namespace Catalogue.Client.Shared
 {
     public class AppStateContainer
     {
-        private readonly CatalogueGQLClient _catalogueGQLClient;
-        public List<Major> AvailableMajor = new();
-        public List<Courses> AvialableCourse = new();
+        private readonly CatalogueClient _catalogueClient;
 
-        public AppStateContainer(CatalogueGQLClient catalogueGQLClient)
+        public AppStateContainer(CatalogueClient catalogueClient)
         {
-            _catalogueGQLClient = catalogueGQLClient;
+            _catalogueClient = catalogueClient;
         }
-        public async Task GetAvailableMajor()
-        {
-            var results = await _catalogueGQLClient.FetchMajorList.ExecuteAsync();
-            if (results.Data is not null)
-            {
-                AvailableMajor = results.Data.Major.Select(x => new Major
-                {
-                    Code = x.Code,
-                    Id = x.Id,
-                    Title = x.Title,
-                    MinCreditHours = x.MinCreditHours,
-                    Courses = x.Courses.Select( x=>new Courses {Code = x.Code,Title = x.Title,Id=x.Id } ).ToList(),
-                }).ToList();
-            }
-        }
+
+        public List<Course> courselist = new();
+        public List<School> schoolList = new();
 
         public async Task GetAvailableCourse()
         {
-            var results = await _catalogueGQLClient.FetchCourseList.ExecuteAsync();
-            if(results.Data is not null)
+            var results = await _catalogueClient.GetCourseList.ExecuteAsync();
+
+            if (results.Data is not null)
             {
-                AvialableCourse = results.Data.Course.Select(x => new Courses
+                courselist = results.Data.CourseList.Select(x => new Course
                 {
-                    Code=x.Code,
-                    CreditHours=x.CreditHours,
-                    Title=x.Title
+                    Id = x.Id,
+                    Title = x.Title,
+                    Code = x.Code,
+                    CreditHours = x.CreditHours
                 }).ToList();
             }
         }
 
-        public async Task AddCourse(Courses addCourse)
+        public async Task<List<School>> GetAvialableSchool()
         {
-           // var results = await _catalogueGQLClient.Add
+            var results = await _catalogueClient.GetSchoolList.ExecuteAsync();
+
+            if(results.Data is not null)
+            {
+                schoolList = results.Data.AllSchools.Select(x => new School
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Name = x.Name
+                }).ToList();
+
+                return schoolList;
+            }
+
+            return schoolList;
+
         }
+
+        public async Task CreateSchool(SchoolDtoInput schoolDto)
+        {
+            await _catalogueClient.AddSchoolData.ExecuteAsync(schoolDto);
+        }
+
+        public async Task AddCourseData(CourseDtoInput courseDto)
+        {
+            await _catalogueClient.AddCourseData.ExecuteAsync(courseDto);
+        }
+
+        public async Task UpdateCourseData(CourseDtoInput courseDto)
+        {
+           await _catalogueClient.UpdateCourseData.ExecuteAsync(courseDto);
+        }
+
+        public async Task UpdateSchool(SchoolDtoInput schoolDto)
+        {
+            await _catalogueClient.UpdateSchoolData.ExecuteAsync(schoolDto);
+        }
+
     }
 }

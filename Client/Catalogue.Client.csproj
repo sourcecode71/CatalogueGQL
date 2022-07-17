@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <GraphQL Remove="GraphQLAPIClient\AddCourseData.graphql" />
+    <GraphQL Remove="GraphQLAPIClient\AddEditSchoolData.graphql" />
+    <GraphQL Remove="GraphQLAPIClient\FetchCourseList.graphql" />
+    <GraphQL Remove="GraphQLAPIClient\FetchSchoolList.graphql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="GraphQLAPIClient\AddCourseData.graphql" />
+    <None Remove="GraphQLAPIClient\AddEditSchoolData.graphql" />
+    <None Remove="GraphQLAPIClient\FetchCourseList.graphql" />
+    <None Remove="GraphQLAPIClient\FetchSchoolList.graphql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include=".config\dotnet-tools.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <GraphQLConfig Include="GraphQLAPIClient\AddCourseData.graphql" />
+    <GraphQLConfig Include="GraphQLAPIClient\AddEditSchoolData.graphql" />
+    <GraphQLConfig Include="GraphQLAPIClient\FetchCourseList.graphql" />
+    <GraphQLConfig Include="GraphQLAPIClient\FetchSchoolList.graphql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.6" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    <PackageReference Include="StrawberryShake.CodeGeneration.CSharp.Analyzers" Version="12.12.0" />
+    <PackageReference Include="StrawberryShake.Transport.Http" Version="12.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Catalogue.Shared.csproj" />
+  </ItemGroup>
+</Project>
